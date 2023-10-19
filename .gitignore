@@ -26,4 +26,4 @@ dist-ssr
 node_modules
 
 # Backend
-Backend/AutobahnEnvironment/
+.Backend/autobahn
