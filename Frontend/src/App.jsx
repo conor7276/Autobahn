@@ -1,10 +1,27 @@
 import "./App.css"
+import {useState, useEffect} from 'react';
 
 import Nav from "./Navbar"
 
 function App() {
   
-
+  const [data, setData] = useState();
+  //console.log("Suii");
+  useEffect(() => {
+        fetch("http://localhost:5000/hello").then(
+            res => res.json()
+             //res =>res.text()
+        ).then(
+          data => {
+            setData(data)
+            console.log(data)
+          }
+        ).catch(err => console.log(err))
+  },[])
+  // fetch("http://localhost:5000/hello")
+  // .then((result)=>{result.json().then((response)=>
+  //   {console.log(response)}
+  //   )})
   return (
     <>
   <div className="relative min-h-screen">
