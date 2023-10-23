@@ -1,8 +1,18 @@
 from flask import Flask
-import json
 from flask_cors import CORS
+from dotenv import load_dotenv
+import psycopg2
+
+import os
+import json
+
+load_dotenv()
+
 
 app = Flask(__name__)
+
+url = os.getenv("DATABASE_URL")
+connection = psycopg2.connect(url)
 
 # This does magic and allows the frontend to fetch
 cors = CORS(app, resources={r"/hello" : {"origins" : "*"}})
