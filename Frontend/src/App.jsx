@@ -1,5 +1,6 @@
 import "./App.css"
 import {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 import Nav from "./Navbar"
 
@@ -37,7 +38,7 @@ function App() {
         <h1 className="text-5xl text-center my-2"> Porsche </h1>
         <p className="text-center text-2xl mx-6">The Porsche exudes elegance and performance in<br/> every curve and detail. Its timeless design and<br/> powerful engineering make it a true symbol of<br/> automotive excellence.</p>
         <div className="flex justify-center">
-        <button className="bg-black text-center py-2 px-5 text-white m-3 mb-5">Invenotry</button>
+        <Link to={`Inventory`}className="bg-black text-center py-2 px-5 text-white m-3 mb-5">Inventory</Link>
         </div>
       </div>
       <img className="absolute top-10 right-0 h-32 " src="https://logos-world.net/wp-content/uploads/2021/04/Porsche-Logo.png" alt="Porsche Logo"></img>
@@ -53,7 +54,9 @@ function App() {
       <h1 className="text-5xl text-center my-2"> AUDI </h1>
       <p className="text-center text-2xl mx-6">The Audi is a masterpiece of precision engineering,<br/> blending cutting-edge technology with luxurious<br/> comfort. It's a symbol of sophistication on the road.</p>
       <div className="flex justify-center">
-        <button className="bg-black text-center py-2 px-5 text-white m-3 mb-5">Invenotry</button>
+      
+        <Link to={`Inventory`}className="bg-black text-center py-2 px-5 text-white m-3 mb-5">Inventory</Link>
+        
         </div>
     </div>
       <img className="absolute top-10 right-6 h-28" src="http://pluspng.com/img-png/audi-logo-png-audi-logo-rings-symbol-4880.png" alt="Audi Logo"></img>
@@ -69,7 +72,7 @@ function App() {
         <h1 className="text-5xl text-center my-2"> Mercedes-Benz </h1>
         <p className="text-center text-2xl mx-6">The Mercedes, synonymous with automotive<br/> prestige, embodies a legacy of unparalleled<br/> craftsmanship and innovation. It sets the standard<br/> for luxury and performance, making every drive an<br/> unforgettable experience.</p>
         <div className="flex justify-center">
-        <button className="bg-black text-center py-2 px-5 text-white m-3 mb-5">Invenotry</button>
+        <Link to={`Inventory`}className="bg-black text-center py-2 px-5 text-white m-3 mb-5">Inventory</Link>
         </div>
       </div>
 
@@ -86,7 +89,7 @@ function App() {
         <h1 className="text-4xl text-center my-2 "> BMW </h1>
         <p className="text-center text-1xl mx-6">The BMW, the ultimate driving machine, combines<br/> sleek design with exhilarating performance. It's a<br/> testament to precision engineering and the joy of<br/> the open road.</p>
         <div className="flex justify-center">
-        <button className="bg-black text-center py-2 px-5 text-white m-3 mb-5">Invenotry</button>
+        <Link to={`Inventory`}className="bg-black text-center py-2 px-5 text-white m-3 mb-5">Inventory</Link>
         </div>
       </div>
 
