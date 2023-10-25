@@ -66,6 +66,11 @@ def hello_world():
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
 
+@app.route("/bye")
+def bye_world():
+    print("Bye World")
+    return {"Greetings" : "Bye, World"}
+
 if __name__ == '__main__':
     app.run()
 
