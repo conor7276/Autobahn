@@ -38,6 +38,7 @@ print("Attempting the great SQL Creation")
 try:
     # execute sql statements
     #curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price decimal(10,2), photos text, issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar);")
+    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('100000','https://media4.speedcafe.com/wp-content/uploads/2021/01/Porsche-911-Turbo-S-003-scaled.jpg','false','NICE CAR','Strong','Germany','2021','911 Turbo S Coupe','Porsche','Coupe')")
     pass
 except:
     print("Machine broke gg")

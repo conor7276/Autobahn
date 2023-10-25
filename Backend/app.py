@@ -18,6 +18,11 @@ def hello_world():
     greeting = {"Hello" : "World"}
     return greeting
 
+@app.route("/bye")
+def bye_world():
+    print("Bye World")
+    return {"Greetings" : "Bye, World"}
+
 if __name__ == '__main__':
     app.run()
 
