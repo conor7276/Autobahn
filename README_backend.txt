@@ -1,8 +1,8 @@
 ////////////////////////////
 Requirements:
-Python 3.10 or above
+Python 3.11 or above
 Follow this link if you don't have python
-https://www.python.org/downloads/release/python-3105/
+https://www.python.org/downloads/release/python-3115/
 ////////////////////////////
 
 Install python and pip.
