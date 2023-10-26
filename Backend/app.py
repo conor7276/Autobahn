@@ -50,11 +50,24 @@ def hello_world():
     print("Attempting the great SQL Creation")
     try:
         # execute sql statements
-        curr.execute("SELECT * FROM customer;")
+        curr.execute("SELECT * FROM cars;")
 
         data = curr.fetchall()
         print(type(data))
         print(data)
+        # data_json = {
+        #     "car_id" : data[0],
+        #     "price" : data[1],
+        #     "photos" : data[2],
+        #     "issold" : data[3],
+        #     "description" : data[4],
+        #     "engine" : data[5],
+        #     "country" : data[6],
+        #     "year" : data[7],
+        #     "name" : data[8],
+        #     "brand" : data[9],
+        #     "bodytype" : data[10]
+        # }
         return data
     except:
         print("Machine broke gg")
