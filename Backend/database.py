@@ -37,7 +37,7 @@ curr = connection.cursor()
 print("Attempting the great SQL Creation")
 try:
     # execute sql statements
-    #curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price decimal(10,2), photos text, issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar);")
+    curr.execute("INSERT INTO customer (name, email, password, phonenumber) VALUES('Conor','conor@test.com','pass','7181112222');")
     pass
 except:
     print("Machine broke gg")
