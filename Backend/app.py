@@ -56,10 +56,10 @@ def hello_world():
         print(type(data))
         print(data)
         return data
-    except:
-        print("Machine broke gg")
+    except(Exception, psycopg2.Error) as error:
+        print(error)
 
-    print("WE FUCKING DID IT")
+
 
 
     connection.commit() # save changes made

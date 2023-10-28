@@ -32,7 +32,7 @@ curr = connection.cursor()
 
 try:
     # execute sql statements
-    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('100000','https://media4.speedcafe.com/wp-content/uploads/2021/01/Porsche-911-Turbo-S-003-scaled.jpg','false','NICE CAR','Strong','Germany','2021','911 Turbo S Coupe','Porsche','Coupe');")
+    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('120000','https://www.carscoops.com/wp-content/uploads/2019/08/3969cea6-audi-rs7-rendering.jpg','false','NICE CAR3','Strong3','Germany','2023','RS7 Sportback','Audi','Sedan');")
 
     data = curr.fetchall()
     print(type(data))
