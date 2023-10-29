@@ -30,19 +30,22 @@ connection = psycopg2.connect(database = DB_NAME,
 # connect to database with cursor to access data
 curr = connection.cursor()
 
-print("Attempting the great SQL Creation")
 try:
     # execute sql statements
-    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('90000','https://cdn.drivek.it/configurator-covermobile/cars/gb/$original$/MERCEDES/CLS/32003_COUPE-4-DOORS/mercedes-bens-cls-2018-cover-mobile.jpg','false','NICE CAR4','Strong4','Germany','2022','Mercedes-Benz CLS','Mercedes-Benz','Sedan');")
+
+
+    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('78500','https://rmcmiami.com/wp-content/uploads/2023/07/E3A2837.jpg','false','NICE CAR4','Strong4','Germany','1994','E500 Limited W124','Mercedes','Sedan');")
+    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('78500','https://rmcmiami.com/wp-content/uploads/2022/08/DSC_9986-scaled.jpg','false','NICE CAR5','Strong5','Japan','1997','RX7 FD3S','Mazda','Coupe');")
+    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('130000','https://rmcmiami.com/wp-content/uploads/2022/12/DSC_2906-1-scaled.jpg','false','NICE CAR6','Strong6','Italy','1996','F355 Berlinetta','Ferrari','Coupe');")
 
     data = curr.fetchall()
     print(type(data))
     print(data)
 
 except(Exception, psycopg2.Error) as error:
-    print("Machine broke gg ", error)
+    print(error)
 
-print("WE FUCKING DID IT")
+
 
 
 connection.commit() # save changes made
@@ -50,10 +53,9 @@ connection.close() # close the connection pls
 curr.close() # close the cursor as well
 
 # Create customer table
-# CREATE TABLE IF NOT EXISTS Customer (customerid serial PRIMARY KEY, name varchar, email varchar, password varchar, phonenumber varchar);
+# curr.execute("CREATE TABLE IF NOT EXISTS Customer (customerid serial PRIMARY KEY, name varchar, email varchar, password varchar, phonenumber varchar);")
 # Insert customer
-# INSERT INTO customer (name, email, password, phonenumber) VALUES('Conor','conor@test.com','pass','7181112222');
+# curr.execute("INSERT INTO customer (name, email, password, phonenumber) VALUES('Conor','conor@test.com','pass','7181112222');")
 # Create cars table
 # CREATE TABLE cars (carid serial PRIMARY KEY, price decimal(10,2), photos text, issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar);
-#  curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('80000','https://cdn.carsbite.com/articles/59276_IMG-20210511-WA0016.jpg','false','NICE CAR2','Strong2','Germany','2023','Mecan Electric','Porsche','SUV');")
-# curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('120000','https://www.carscoops.com/wp-content/uploads/2019/08/3969cea6-audi-rs7-rendering.jpg','false','NICE CAR3','Strong3','Germany','2023','RS7 Sportback','Audi','Sedan');")
+

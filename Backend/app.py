@@ -70,8 +70,8 @@ def hello_world():
         #     "bodytype" : data[10]
         # }
         return data
-    except:
-        print("Machine broke gg")
+    except(Exception, psycopg2.Error) as error:
+        print(error)
 
     print("WE FUCKING DID IT")
     connection.commit() # save changes made
@@ -90,7 +90,7 @@ def get_element_by_id(id):
     # connect to database with cursor to access data
     curr = connection.cursor()
 
-    print("Attempting the great SQL Creation")
+
     try:
         # execute sql statements
         curr.execute("SELECT * FROM cars WHERE carid = %s;", (id,))
@@ -100,10 +100,10 @@ def get_element_by_id(id):
         print(data)
        
         return data
-    except:
-        print("Machine broke gg")
+    except(Exception, psycopg2.Error) as error:
+        print(error)
 
-    print("WE FUCKING DID IT")
+
     connection.commit() # save changes made
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
