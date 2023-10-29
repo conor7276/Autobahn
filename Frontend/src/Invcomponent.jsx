@@ -8,7 +8,7 @@ export  default function Invcomponent({car}){
 
     return(
         
-        <Link to={`${id}`} className='group w-full h-96 p-4 mt-10 mx-10 rounded-lg  duration-300 transform hover:-translate-y-1'>
+        <Link to={`${id}`} className='group w-full h-84 p-2 mt-5 rounded-lg  duration-300 transform hover:-translate-y-1'>
         <div className="w-full h-full">
         <img className='object-cover rounded-lg w-full h-full' src={photo} alt="Photos Coming Soon" />
         </div>
