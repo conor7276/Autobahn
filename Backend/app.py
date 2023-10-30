@@ -20,9 +20,10 @@ DB_PASSWORD = os.environ.get("DB_PASSWORD")
 DB_PORT = os.environ.get("DB_PORT")
 
 app = Flask(__name__)
+CORS(app)
 
 # This does magic and allows the frontend to fetch
-cors = CORS(app, resources={r"/hello" : {"origins" : "*"}})
+#cors = CORS(app, resources={r"/hello" : {"origins" : "*"}})
 
 @app.get("/")
 def home():
@@ -50,21 +51,63 @@ def hello_world():
     print("Attempting the great SQL Creation")
     try:
         # execute sql statements
-        curr.execute("SELECT * FROM customer;")
+        curr.execute("SELECT * FROM cars;")
 
         data = curr.fetchall()
         print(type(data))
         print(data)
+        # data_json = {
+        #     "car_id" : data[0],
+        #     "price" : data[1],
+        #     "photos" : data[2],
+        #     "issold" : data[3],
+        #     "description" : data[4],
+        #     "engine" : data[5],
+        #     "country" : data[6],
+        #     "year" : data[7],
+        #     "name" : data[8],
+        #     "brand" : data[9],
+        #     "bodytype" : data[10]
+        # }
         return data
-    except:
-        print("Machine broke gg")
+    except(Exception, psycopg2.Error) as error:
+        print(error)
 
     print("WE FUCKING DID IT")
+    connection.commit() # save changes made
+    connection.close() # close the connection pls
+    curr.close() # close the cursor as well
+
+@app.route("/hello/<int:id>")
+def get_element_by_id(id):
+    connection = psycopg2.connect(database = DB_NAME,
+                            host = DB_HOST,
+                            user = DB_USER,
+                                password = DB_PASSWORD,
+                                port = DB_PORT )
+
+
+    # connect to database with cursor to access data
+    curr = connection.cursor()
+
+
+    try:
+        # execute sql statements
+        curr.execute("SELECT * FROM cars WHERE carid = %s;", (id,))
+
+        data = curr.fetchall()
+        print(type(data))
+        print(data)
+       
+        return data
+    except(Exception, psycopg2.Error) as error:
+        print(error)
 
 
     connection.commit() # save changes made
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
+
 
 @app.route("/bye")
 def bye_world():
