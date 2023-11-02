@@ -38,11 +38,12 @@ curr = connection.cursor()
 
 try:
     # execute sql statements
-    #curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price float, photos text[], issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar, filter varchar);")
-    #curr.execute("DROP TABLE cars;")
-    #curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype,filter) VALUES('78500',ARRAY['https://rmcmiami.com/wp-content/uploads/2023/07/E3A2837.jpg','http://masbukti.com/manufacturers/mercedes-benz/mercedes-benz-e-class/1994-mercedes-benz-e-class-coupe/1994-mercedes-benz-e-class-coupe-3.jpg'],'false','NICE CAR4','Strong4','Germany','1994','E500 Limited W124','Mercedes','Sedan','Mercedes');")
-    #curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype,filter) VALUES('78500',ARRAY['https://rmcmiami.com/wp-content/uploads/2022/08/DSC_9986-scaled.jpg'],'false','NICE CAR5','Strong5','Japan','1997','RX7 FD3S','Mazda','Coupe','Special');")
-    #curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype,filter) VALUES('130000',ARRAY['https://rmcmiami.com/wp-content/uploads/2022/12/DSC_2906-1-scaled.jpg'],'false','NICE CAR6','Strong6','Italy','1996','F355 Berlinetta','Ferrari','Coupe','Foreigners');")
+    # curr.execute("DROP TABLE cars;")
+    # curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price float, photos text[], issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar, filter varchar);")
+    
+    # curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype,filter) VALUES('78500',ARRAY['https://rmcmiami.com/wp-content/uploads/2023/07/E3A2837.jpg','http://masbukti.com/manufacturers/mercedes-benz/mercedes-benz-e-class/1994-mercedes-benz-e-class-coupe/1994-mercedes-benz-e-class-coupe-3.jpg'],'false','NICE CAR4','Strong4','Germany','1994','E500 Limited W124','Mercedes','Sedan','Mercedes');")
+    # curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype,filter) VALUES('78500',ARRAY['https://rmcmiami.com/wp-content/uploads/2022/08/DSC_9986-scaled.jpg'],'false','NICE CAR5','Strong5','Japan','1997','RX7 FD3S','Mazda','Coupe','Special');")
+    # curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype,filter) VALUES('130000',ARRAY['https://rmcmiami.com/wp-content/uploads/2022/12/DSC_2906-1-scaled.jpg'],'false','NICE CAR6','Strong6','Italy','1996','F355 Berlinetta','Ferrari','Coupe','Foreigners');")
 
     data = curr.fetchall()
     print(type(data))

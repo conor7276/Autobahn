@@ -22,9 +22,18 @@ function Inventory() {
                     console.log(data);}
                 else{
                     const response = await fetch(`http://localhost:5000/hello2/${selectedCar}`);
-                    const data = await response.json();
-                setData(data);
-                console.log(data);
+                    if (response == "None"){
+                        setData("All");
+                        console.log("No cars found");
+                    }
+                    else{
+                        
+                        const data = await response.json();
+                        setData(data);
+                        console.log(data);
+
+                    }
+
                 }
                 
             } catch (error) {
@@ -51,10 +60,11 @@ function Inventory() {
         );
     }
     
-    //const car=data[0]
+
     const carsLayout = data.map((car, i) => {
         return <Carprot car={car} key={i} />;
       });
+
 
     return (
         <>

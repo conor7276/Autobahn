@@ -69,7 +69,7 @@ def hello_world():
         #     "brand" : data[9],
         #     "bodytype" : data[10]
         # }
-        return data
+        
     except(Exception, psycopg2.Error) as error:
         print(error)
 
@@ -77,6 +77,7 @@ def hello_world():
     connection.commit() # save changes made
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
+    return data
 
 @app.route("/hello/<int:id>")
 def get_element_by_id(id):
@@ -99,13 +100,14 @@ def get_element_by_id(id):
         print(type(data))
         print(data)
        
-        return data
+        
     except(Exception, psycopg2.Error) as error:
         print(error)
 
     connection.commit() # save changes made
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
+    return data
 
 @app.route("/hello2/<string:brand>")
 def get_element_by_brand(brand):
@@ -128,13 +130,18 @@ def get_element_by_brand(brand):
         print(type(data))
         print(data)
        
-        return data
+        
     except(Exception, psycopg2.Error) as error:
         print(error)
 
     connection.commit() # save changes made
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
+
+    if data:
+        return data
+    else:
+        return "None"
 
 
 
