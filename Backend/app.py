@@ -103,10 +103,39 @@ def get_element_by_id(id):
     except(Exception, psycopg2.Error) as error:
         print(error)
 
+    connection.commit() # save changes made
+    connection.close() # close the connection pls
+    curr.close() # close the cursor as well
+
+@app.route("/hello2/<string:brand>")
+def get_element_by_brand(brand):
+    connection = psycopg2.connect(database = DB_NAME,
+                            host = DB_HOST,
+                            user = DB_USER,
+                                password = DB_PASSWORD,
+                                port = DB_PORT )
+
+
+    # connect to database with cursor to access data
+    curr = connection.cursor()
+
+
+    try:
+        # execute sql statements
+        curr.execute("SELECT * FROM cars WHERE filter = %s;", (brand,))
+
+        data = curr.fetchall()
+        print(type(data))
+        print(data)
+       
+        return data
+    except(Exception, psycopg2.Error) as error:
+        print(error)
 
     connection.commit() # save changes made
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
+
 
 
 @app.route("/bye")

@@ -15,7 +15,7 @@ export default function Specific() {
       <div>
         {car.map((item) => (
           <div >
-            <img className="w-1/2 h-1/2" src={item[2]} />
+            <img className="w-1/2 h-1/2" src={item[2][0]} />
             <p>Hello</p>
             <p>{item[1]}</p>
           </div>
