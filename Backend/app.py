@@ -36,8 +36,8 @@ def home():
 #     greeting = {"Hello" : "World"}
 #     return greeting
 
-@app.route("/hello")
-def hello_world():
+@app.route("/hello/<int:price>")
+def get_element_by_price(price):
     connection = psycopg2.connect(database = DB_NAME,
                             host = DB_HOST,
                             user = DB_USER,
@@ -51,7 +51,7 @@ def hello_world():
     print("Attempting the great SQL Creation")
     try:
         # execute sql statements
-        curr.execute("SELECT * FROM cars;")
+        curr.execute("SELECT * FROM cars WHERE price <= %s;", (price,))
 
         data = curr.fetchall()
         print(type(data))
@@ -79,7 +79,7 @@ def hello_world():
     curr.close() # close the cursor as well
     return data
 
-@app.route("/hello/<int:id>")
+@app.route("/specific/<int:id>")
 def get_element_by_id(id):
     connection = psycopg2.connect(database = DB_NAME,
                             host = DB_HOST,
@@ -109,8 +109,9 @@ def get_element_by_id(id):
     curr.close() # close the cursor as well
     return data
 
-@app.route("/hello2/<string:brand>")
-def get_element_by_brand(brand):
+@app.route("/hello2/<string:brand>/<int:price>")
+def get_element_by_brand(brand, price):
+    
     connection = psycopg2.connect(database = DB_NAME,
                             host = DB_HOST,
                             user = DB_USER,
@@ -124,7 +125,7 @@ def get_element_by_brand(brand):
 
     try:
         # execute sql statements
-        curr.execute("SELECT * FROM cars WHERE filter = %s;", (brand,))
+        curr.execute("SELECT * FROM cars WHERE filter = %s AND price <= %s;", (brand, price))
 
         data = curr.fetchall()
         print(type(data))
@@ -138,10 +139,9 @@ def get_element_by_brand(brand):
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
 
-    if data:
-        return data
-    else:
-        return "None"
+   
+    return data
+    
 
 
 
