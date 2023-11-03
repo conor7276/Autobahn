@@ -2,7 +2,7 @@ import {useLoaderData } from "react-router-dom";
 
 export async function loader({ params }) {
     const jobResponse = await fetch(
-      `http://localhost:5000/hello/${params.CarId}`
+      `http://localhost:5000/specific/${params.CarId}`
     );
     const car = await jobResponse.json();
     return { car };
