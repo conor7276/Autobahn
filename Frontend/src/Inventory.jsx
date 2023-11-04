@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Nav from "./Navbar";
 import Carprot from "./Invcomponent"
 
 function Inventory() {
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const brand = searchParams.get('brand');
     const [data, setData] = useState([]);
-    const [selectedCar, setSelectedCar] = useState('All');
+    const [selectedCar, setSelectedCar] = useState(brand);
     const [showSpinner, setShowSpinner] = useState(true);
     const [price, setPrice] = useState(500000); 
 
@@ -41,12 +45,10 @@ function Inventory() {
                         console.log(data);
                     }
                 }
-
             } catch (error) {
                 console.log(error);
             }
         };
-
         fetchData();
     }, [selectedCar,price]);
 
@@ -60,18 +62,11 @@ function Inventory() {
         
       };
 
-
-      
-
-  
-
-
-    
-    
         return (
             <>
                 <Nav />
-                <div className="absolute p-2 rounded-lg bg-gray-700 mt-7 w-1/4 h-auto ml-1">
+                <div className="h-screen w-screen bg-gray-200">
+                <div className="absolute p-2 rounded-lg bg-black mt-7 w-1/4 h-auto ml-1">
                 <select id="carSelect" className="w-full h-10 bg-gray-200 rounded-md" value={selectedCar} onChange={handleCarSelect}>
                 <option value="All">All</option>
                 <option value="Porsche">Porsche</option>
@@ -110,6 +105,7 @@ function Inventory() {
                     </div>
                     </div>
                   )}
+                  </div>
                 </>
               );
 
