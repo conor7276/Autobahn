@@ -12,8 +12,8 @@ export  default function Invcomponent({car}){
         <div className="w-full h-full">
         <img className='object-cover rounded-lg w-full h-full' src={photo[0]} alt="Photos Coming Soon" />
         </div>
-        <h3 className="absolute bottom-10 left-10 text-white">{name}</h3>
-        <h3 className="absolute bottom-10 right-10 text-white">{price}</h3>
+        <h3 className="absolute bottom-10 left-10 text-white w-60">{name}</h3>
+        <h3 className="absolute bottom-10 right-10 text-white">{price} $</h3>
         </Link>
     )
 }

@@ -8,12 +8,18 @@ function Inventory() {
     const searchParams = new URLSearchParams(location.search);
     const brand = searchParams.get('brand');
     const [data, setData] = useState([]);
+    const [bodyType,setBodyType]= useState('All');
     const [selectedCar, setSelectedCar] = useState(brand);
     const [showSpinner, setShowSpinner] = useState(true);
     const [price, setPrice] = useState(500000); 
+    const [min,setMin]=useState(1950);
+    const [max,setMax]=useState(2023);
 
     const handleCarSelect = (event) => {
         setSelectedCar(event.target.value);
+    };
+    const handleBodyTypeSelect = (event) => {
+        setBodyType(event.target.value);
     };
     const handlePriceChange = (event) => {
         setPrice(event.target.value);
@@ -29,12 +35,12 @@ function Inventory() {
             try {
                 
                 if(selectedCar==="All"){
-                    const response = await fetch(`http://localhost:5000/hello/${price}`);
+                    const response = await fetch(`http://localhost:5000/hello/${price}/${min}/${max}/${bodyType}`);
                     const data = await response.json();
                     setData(data);
                     console.log(data);}
                 else{
-                    const response = await fetch(`http://localhost:5000/hello2/${selectedCar}/${price}`);
+                    const response = await fetch(`http://localhost:5000/hello2/${selectedCar}/${price}/${min}/${max}/${bodyType}`);
                     const data = await response.json();
                     if (data.length==0){
                         setData([]);
@@ -50,7 +56,7 @@ function Inventory() {
             }
         };
         fetchData();
-    }, [selectedCar,price]);
+    }, [selectedCar,price,min,max,bodyType]);
 
     const carsLayout = data.map((car, i) => {
         return <Carprot car={car} key={i} />;
@@ -59,15 +65,23 @@ function Inventory() {
       const [x, setX] = useState(500000); 
     const handleXChange = (event) => {
         setX(event.target.value);
-        
+      };
+
+      const handleMinChange = (event) => {
+        setMin(event.target.value);
+      };
+      const handleMaxChange = (event) => {
+        setMax(event.target.value);
       };
 
         return (
             <>
                 <Nav />
                 <div className="h-screen w-screen bg-gray-200">
-                <div className="absolute p-2 rounded-lg bg-black mt-7 w-1/4 h-auto ml-1">
-                <select id="carSelect" className="w-full h-10 bg-gray-200 rounded-md" value={selectedCar} onChange={handleCarSelect}>
+                <div className="absolute p-2 rounded-lg place-content-center bg-black mt-7 w-1/4 h-auto mx-1">
+                <span className="w-full flex justify-center items-center text-sm text-white py-2 mr-3">Make</span>
+                <div className="flex justify-center items-center">
+                <select id="carSelect" className="w-2/3 h-10 text-xl bg-gray-200 rounded-md" value={selectedCar} onChange={handleCarSelect}>
                 <option value="All">All</option>
                 <option value="Porsche">Porsche</option>
                 <option value="Audi">Audi</option>
@@ -76,6 +90,7 @@ function Inventory() {
                 <option value="Foreigners">Foreigners</option>
                 <option value="Special">Special</option>
                 </select>
+                </div>
                 <div className="price-range p-4">
                 <span className="text-sm text-white">Max Price $</span>
                 <span className="text-sm text-white">{x}</span>
@@ -85,6 +100,26 @@ function Inventory() {
                 <span className="text-sm text-white">50000</span>
                 <span className="text-sm text-white">500000</span>
                 </div>
+                </div>
+                <div>
+                <span className="w-full flex justify-center items-center text-sm text-white mr-3">Year</span>
+                <div className="w-full flex p-4 justify-center items-center">
+                <span className="text-sm text-white mr-3">Min:</span>
+                <input className="rounded-lg text-xl h-10 bg-gray-200" type="number" id="minYear" name="minYear" value={min} min="1950" max="2023" step="1" onChange={handleMinChange} />
+                <span className="text-sm text-white ml-10 mr-3">Max:</span>
+                <input className="rounded-lg text-xl h-10 bg-gray-200" type="number" id="maxYear" name="maxYear" value={max} min="1950" max="2023" step="1" onChange={handleMaxChange}/>
+                </div>
+                </div>
+                
+                <span className="w-full flex justify-center items-center text-sm text-white py-2 mr-3">Bodytype</span>
+                <div className="flex justify-center items-center">
+                <select id="bodyType" className="w-2/3  h-10 text-xl bg-gray-200 rounded-md mb-4" value={bodyType} onChange={handleBodyTypeSelect} >
+                <option value="All">All</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Coupe">Coupe</option>
+                <option value="Convertible">Convertible</option>
+                <option value="SUV">SUV</option>
+                </select>
                 </div>
                 </div>
                 
@@ -97,10 +132,10 @@ function Inventory() {
                     <span className="sr-only">Loading...</span>
                     </div>
                 ): data.length == 0 ? (
-                    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">No results found</div>
+                    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">Sorry we dont have that car</div>
                   ) : (
                     <div>
-                      <div className='grid grid-cols-3 w-3/4 h-auto ml-auto pr-10'>
+                      <div className='grid grid-cols-3 w-3/4 h-auto ml-auto pl-2 pr-5'>
                         {carsLayout}
                     </div>
                     </div>
