@@ -36,8 +36,8 @@ def home():
 #     greeting = {"Hello" : "World"}
 #     return greeting
 
-@app.route("/hello/<int:price>")
-def get_element_by_price(price):
+@app.route("/hello/<int:price>/<int:min>/<int:max>/<string:body>")
+def get_element_by_price(price,min,max,body):
     connection = psycopg2.connect(database = DB_NAME,
                             host = DB_HOST,
                             user = DB_USER,
@@ -51,7 +51,10 @@ def get_element_by_price(price):
     print("Attempting the great SQL Creation")
     try:
         # execute sql statements
-        curr.execute("SELECT * FROM cars WHERE price <= %s;", (price,))
+        if body=="All":
+            curr.execute("SELECT * FROM cars WHERE price <= %s AND year >= %s AND year <= %s;", (price,min,max))
+        else:
+            curr.execute("SELECT * FROM cars WHERE price <= %s AND year >= %s AND year <= %s AND bodytype = %s;", (price,min,max,body))
 
         data = curr.fetchall()
         print(type(data))
@@ -109,8 +112,8 @@ def get_element_by_id(id):
     curr.close() # close the cursor as well
     return data
 
-@app.route("/hello2/<string:brand>/<int:price>")
-def get_element_by_brand(brand, price):
+@app.route("/hello2/<string:brand>/<int:price>/<int:min>/<int:max>/<string:bodyType>")
+def get_element_by_brand(brand, price,min,max,bodyType):
     
     connection = psycopg2.connect(database = DB_NAME,
                             host = DB_HOST,
@@ -125,7 +128,10 @@ def get_element_by_brand(brand, price):
 
     try:
         # execute sql statements
-        curr.execute("SELECT * FROM cars WHERE filter = %s AND price <= %s;", (brand, price))
+        if bodyType=='All':
+            curr.execute("SELECT * FROM cars WHERE filter = %s AND price <= %s AND year >= %s AND year <= %s;", (brand, price,min,max))
+        else:
+            curr.execute("SELECT * FROM cars WHERE filter = %s AND price <= %s AND year >= %s AND year <= %s AND bodytype = %s;", (brand, price,min,max,bodyType))
 
         data = curr.fetchall()
         print(type(data))

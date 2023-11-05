@@ -4,3 +4,12 @@
 @tailwind utilities;
 
 
+.grayscale-on-hover {
+    transition: filter 0.3s; /* Add a smooth transition effect */
+    border: 2px solid transparent;
+  }
+  
+  .grayscale-on-hover:hover {
+    filter: grayscale(100%); /* Apply grayscale effect on hover */
+    border: 2px solid black;
+  }
