@@ -1,8 +1,10 @@
 from flask import Flask
+from flask import request
 from flask_cors import CORS
 
 from dotenv import load_dotenv
 import psycopg2
+
 
 import os
 from os.path import join, dirname
@@ -76,7 +78,7 @@ def get_element_by_price(price,min,max,body):
     except(Exception, psycopg2.Error) as error:
         print(error)
 
-    print("WE FUCKING DID IT")
+
     connection.commit() # save changes made
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
@@ -100,8 +102,8 @@ def get_element_by_id(id):
         curr.execute("SELECT * FROM cars WHERE carid = %s;", (id,))
 
         data = curr.fetchall()
-        print(type(data))
-        print(data)
+        #print(type(data))
+        #print(data)
        
         
     except(Exception, psycopg2.Error) as error:
@@ -134,8 +136,8 @@ def get_element_by_brand(brand, price,min,max,bodyType):
             curr.execute("SELECT * FROM cars WHERE filter = %s AND price <= %s AND year >= %s AND year <= %s AND bodytype = %s;", (brand, price,min,max,bodyType))
 
         data = curr.fetchall()
-        print(type(data))
-        print(data)
+        #print(type(data))
+        #print(data)
        
         
     except(Exception, psycopg2.Error) as error:
@@ -148,6 +150,15 @@ def get_element_by_brand(brand, price,min,max,bodyType):
    
     return data
     
+@app.route('/inquire', methods = ['POST'])
+def inquire_car():
+    if(request.method == 'POST'):
+        print("Got your post request to inquire about the car")
+
+    else:
+        print("Something happened in inquiry that wasn't supposed to")
+    return {"Post Request" : "Recieved"}
+
 
 
 
