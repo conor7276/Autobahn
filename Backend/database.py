@@ -38,6 +38,7 @@ curr = connection.cursor()
 
 try:
     # execute sql statements
+
     #curr.execute("DROP TABLE cars;")
     #curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price double, photos text[], issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar, filter varchar, miles int);")
     curr.execute("DELETE FROM cars;")
@@ -76,6 +77,7 @@ try:
                        'filter' :  car['filter'],
                        'miles' : car['miles']
                         })
+
     data = curr.fetchall()
     #print(data)
     

@@ -1,9 +1,11 @@
 from flask import Flask
-from flask import request
+from flask import request,jsonify
 from flask_cors import CORS
-
+from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
 import psycopg2
+from flask_jwt_extended import create_access_token,get_jwt,get_jwt_identity, \
+                               unset_jwt_cookies, jwt_required, JWTManager
 
 
 import os
@@ -23,9 +25,62 @@ DB_PORT = os.environ.get("DB_PORT")
 
 app = Flask(__name__)
 CORS(app)
-
+app.config["JWT_SECRET_KEY"] = "please-remember-to-change-me"
+jwt = JWTManager(app)
 # This does magic and allows the frontend to fetch
 #cors = CORS(app, resources={r"/hello" : {"origins" : "*"}})
+@app.route('/token', methods=["POST"])
+def create_token():
+    connection = psycopg2.connect(database = DB_NAME,
+                            host = DB_HOST,
+                            user = DB_USER,
+                                password = DB_PASSWORD,
+                                port = DB_PORT )
+
+
+    # connect to database with cursor to access data
+    curr = connection.cursor()
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+    curr.execute("SELECT * FROM Customer WHERE email = %s AND password = %s;", (email,password))
+    data = curr.fetchall()
+    print(data)
+    user_id = data[0] 
+    if len(data) == 0:
+        print("No Good")
+        return {"msg": "Wrong email or password"}, 401
+
+    access_token = create_access_token(identity=email)
+    print("guuuuuuud")
+    response = {"access_token":access_token , "user_id": user_id}
+    return response
+
+@app.route("/logout", methods=["POST"])
+def logout():
+    response = jsonify({"msg": "logout successful"})
+    unset_jwt_cookies(response)
+    return response
+
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
+
+@app.after_request
+def refresh_expiring_jwts(response):
+    try:
+        exp_timestamp = get_jwt()["exp"]
+        now = datetime.now(timezone.utc)
+        target_timestamp = datetime.timestamp(now + timedelta(minutes=30))
+        if target_timestamp > exp_timestamp:
+            access_token = create_access_token(identity=get_jwt_identity())
+            data = response.get_json()
+            if type(data) is dict:
+                data["access_token"] = access_token 
+                response.data = json.dumps(data)
+        return response
+    except (RuntimeError, KeyError):
+        # Case where there is not a valid JWT. Just return the original respone
+        return response
+    
+
 
 @app.get("/")
 def home():
