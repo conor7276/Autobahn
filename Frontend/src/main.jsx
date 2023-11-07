@@ -7,12 +7,18 @@ import Car, {
   loader as carLoader
 } from './Specific.jsx'
 import ErrorPage from "./Errpg.jsx"
+import Login from "./auth/Login.jsx"
 import './index.css'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path:"/login",
+    element:<Login/>,
     errorElement: <ErrorPage />,
   },
   {
