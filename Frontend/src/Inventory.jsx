@@ -77,8 +77,8 @@ function Inventory() {
         return (
             <>
                 <Nav />
-                <div className="h-screen w-screen bg-gray-200">
-                <div className="absolute p-2 rounded-lg place-content-center bg-black mt-7 w-1/4 h-auto mx-1">
+                <div className=" flex flex-col  w-screen bg-gray-200">
+                <div className="absolute  p-2 rounded-lg place-content-center bg-black mt-7 w-1/4 h-auto mx-1">
                 <span className="w-full flex justify-center items-center text-sm text-white py-2 mr-3">Make</span>
                 <div className="flex justify-center items-center">
                 <select id="carSelect" className="w-2/3 h-10 text-xl bg-gray-200 rounded-md" value={selectedCar} onChange={handleCarSelect}>

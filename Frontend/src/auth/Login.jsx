@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import Nav from "../Navbar";
 import axios from "axios";
 
@@ -7,7 +7,13 @@ const videoPath = "/rs6.mp4";
 
 function Login() {
     const navigate = useNavigate();
-
+    const [login,setLogin] =useState(true)
+    const handleLoginFlase = (event) => {
+      setLogin(false);
+    };
+    const handleLoginTrue = (event) => {
+      setLogin(true);
+    };
 
     function getToken() {
       const userToken = localStorage.getItem('token');
@@ -27,16 +33,57 @@ function Login() {
       localStorage.removeItem("token");
       setToken(null);
     }
+    const [signupForm,setSignupForm]=useState({
+      name: "",
+      email: "",
+      password:"",
+      phone:""
+    })
 
     const [loginForm, setloginForm] = useState({
       email: "",
       password: ""
     })
 
+    function singMeUP(event){
+      axios({
+        credentials: 'include',
+        method: "POST",
+        mode: 'no-cors',
+        url: "http://localhost:5000/signUp",
+        data: JSON.stringify({
+            name: signupForm.name,
+            email: signupForm.email,
+            password: signupForm.password,
+            phone: signupForm.phone
+        }),
+        headers: {
+          'Authorization': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      })
+
+    
+
+
+      
+      setSignupForm(({
+        name:"",
+        email: "",
+        password: "",
+      phone:""}))
+
+      event.preventDefault()
+      setLogin(true);
+
+      return
+      
+    }
+
     function logMeIn(event) {
         axios({
             method: "POST",
-            url: "http://127.0.0.1:5000/token",
+            url: "http://localhost:5000/token",
             data: {
                 email: loginForm.email,
                 password: loginForm.password,
@@ -72,12 +119,17 @@ function Login() {
       event.preventDefault()
     }
 
-    function handleChange(event) { 
+    function handleChangeLogin(event) { 
       const {value, name} = event.target
       setloginForm(prevNote => ({
           ...prevNote, [name]: value})
       )}
       
+      function handleChangeSignup(event) { 
+        const {value, name} = event.target
+        setSignupForm(prevNote => ({
+            ...prevNote, [name]: value})
+        )}
 
     return (
       <div>
@@ -98,12 +150,15 @@ function Login() {
         className="w-120 h-48 mb-24"
       />
     </div>
-    <div className="bg-white bg-opacity-50 p-4 rounded-md">
-      <h1 className="text-center pb-4">Login</h1>
-      <form className="login">
+
+    <div className="bg-white  bg-opacity-50 p-4 rounded-md">
+      {login ? (
+        <div>
+        <h1 className="text-center pb-4">Login</h1>
+        <form className="login" >
         <div className="mb-4">
           <input
-            onChange={handleChange}
+            onChange={handleChangeLogin}
             type="email"
             text={loginForm.email}
             name="email"
@@ -113,7 +168,7 @@ function Login() {
         </div>
         <div className="mb-4">
           <input
-            onChange={handleChange}
+            onChange={handleChangeLogin}
             type="password"
             text={loginForm.password}
             name="password"
@@ -123,11 +178,73 @@ function Login() {
         </div>
         <button
           onClick={logMeIn}
-          className=" bg-black hover-bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+          className=" bg-black w-full hover-bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
         >
-          Submit
+          Login
         </button>
       </form>
+      <button onClick={handleLoginFlase}>
+        Dont have an account?
+      </button>
+      </div> ) : (
+        
+        <div>
+           <h1 className="text-center pb-4">Sign Up</h1>
+        <form className="Sign up" >
+        <div className="mb-4">
+          <input
+            onChange={handleChangeSignup}
+            type="name"
+            text={signupForm.name}
+            name="name"
+            placeholder="Name"
+            value={signupForm.name}
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            onChange={handleChangeSignup}
+            type="email"
+            text={signupForm.email}
+            name="email"
+            placeholder="Email"
+            value={signupForm.email}
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            onChange={handleChangeSignup}
+            type="password"
+            text={signupForm.password}
+            name="password"
+            placeholder="Password"
+            value={signupForm.password}
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            onChange={handleChangeSignup}
+            type="phone"
+            text={signupForm.phone}
+            name="phone"
+            placeholder="Phone"
+            value={signupForm.phone}
+          />
+        </div>
+        <button
+          onClick={singMeUP}
+          className=" bg-black w-full hover-bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+        >
+          Signup
+        </button>
+      </form>
+      <button onClick={handleLoginTrue}>
+        Already have an account?
+      </button>
+        </div>
+      )}
+
+
       {showAlert && (
         <div className="alert">
           <p>Hello {data[1]}</p>

@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request,jsonify
 from flask_cors import CORS
+from flask import render_template
 from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
 import psycopg2
@@ -29,6 +30,32 @@ app.config["JWT_SECRET_KEY"] = "please-remember-to-change-me"
 jwt = JWTManager(app)
 # This does magic and allows the frontend to fetch
 #cors = CORS(app, resources={r"/hello" : {"origins" : "*"}})
+#//////////////////////////////////
+@app.route('/signUp', methods=['GET', 'POST'])
+def signUp():
+    
+    connection = psycopg2.connect(database = DB_NAME,
+                            host = DB_HOST,
+                            user = DB_USER,
+                                password = DB_PASSWORD,
+                                port = DB_PORT )
+    curr = connection.cursor()
+    name=request.json.get("name",None)
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+    phone=request.json.get("phone",None)
+    curr.execute("INSERT INTO Customer (name, email, password, phonenumber) VALUES(%s,%s,%s,%s);",(name,email,password,phone))
+    print("USER CREATED")
+    connection.commit() # save changes made
+    connection.close() # close the connection pls
+    curr.close() # close the cursor as well
+    return 'Transformed!'
+
+
+
+
+
+
 @app.route('/token', methods=["POST"])
 def create_token():
     connection = psycopg2.connect(database = DB_NAME,
@@ -45,14 +72,17 @@ def create_token():
     curr.execute("SELECT * FROM Customer WHERE email = %s AND password = %s;", (email,password))
     data = curr.fetchall()
     print(data)
-    user_id = data[0] 
+    
     if len(data) == 0:
         print("No Good")
         return {"msg": "Wrong email or password"}, 401
-
+    user_id = data[0] 
     access_token = create_access_token(identity=email)
     print("guuuuuuud")
     response = {"access_token":access_token , "user_id": user_id}
+    connection.commit() # save changes made
+    connection.close() # close the connection pls
+    curr.close() # close the cursor as well
     return response
 
 @app.route("/logout", methods=["POST"])
