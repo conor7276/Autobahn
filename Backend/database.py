@@ -39,9 +39,9 @@ curr = connection.cursor()
 try:
     # execute sql statements
 
-    #curr.execute("DROP TABLE cars;")
-    #curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price double, photos text[], issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar, filter varchar, miles int);")
-    curr.execute("DELETE FROM cars;")
+    curr.execute("DROP TABLE cars;")
+    curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price float, photos text[], issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar, filter varchar, miles int);")
+    #curr.execute("DELETE FROM cars;")
   
     inventory_file = open("inventory.json")
     data = json.loads(inventory_file.read())
