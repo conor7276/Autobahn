@@ -199,8 +199,8 @@ def get_element_by_id(id):
     curr.close() # close the cursor as well
     return data
 
-@app.route("/hello2/<string:brand>/<int:price>/<int:min>/<int:max>/<string:bodyType>")
-def get_element_by_brand(brand, price,min,max,bodyType):
+@app.route("/hello2/<string:brand>/<int:price>/<int:min>/<int:max>/<string:bodyType>/<int:miles>")
+def get_element_by_brand(brand, price,min,max,bodyType,miles):
     
     connection = psycopg2.connect(database = DB_NAME,
                             host = DB_HOST,
@@ -216,9 +216,9 @@ def get_element_by_brand(brand, price,min,max,bodyType):
     try:
         # execute sql statements
         if bodyType=='All':
-            curr.execute("SELECT * FROM cars WHERE filter = %s AND price <= %s AND year >= %s AND year <= %s;", (brand, price,min,max))
+            curr.execute("SELECT * FROM cars WHERE filter = %s AND price <= %s AND year >= %s AND year <= %s AND miles <= %s;", (brand, price,min,max,miles))
         else:
-            curr.execute("SELECT * FROM cars WHERE filter = %s AND price <= %s AND year >= %s AND year <= %s AND bodytype = %s;", (brand, price,min,max,bodyType))
+            curr.execute("SELECT * FROM cars WHERE filter = %s AND price <= %s AND year >= %s AND year <= %s AND bodytype = %s AND miles <= %s;", (brand, price,min,max,bodyType,miles))
 
         data = curr.fetchall()
         #print(type(data))
