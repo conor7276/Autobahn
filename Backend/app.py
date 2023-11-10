@@ -44,13 +44,43 @@ def signUp():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
     phone=request.json.get("phone",None)
-    curr.execute("INSERT INTO Customer (name, email, password, phonenumber) VALUES(%s,%s,%s,%s);",(name,email,password,phone))
+    liked = []
+    curr.execute("INSERT INTO Customer (name, email, password,liked, phonenumber) VALUES(%s,%s,%s,%s,%s);",(name,email,password,liked,phone))
     print("USER CREATED")
     connection.commit() # save changes made
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
     return 'Transformed!'
 
+@app.route('/Like', methods=['POST'])
+def like():
+    connection = psycopg2.connect(
+        database=DB_NAME,
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        port=DB_PORT
+    )
+    curr = connection.cursor()
+
+    personID = request.json.get("personID", None)
+    carID = request.json.get("carID", None)
+
+    # Check if the value already exists in the array
+    curr.execute("SELECT 1 FROM Customer WHERE customerid = %s AND %s = ANY(liked);", (personID, carID))
+    exists = curr.fetchone()
+
+    if not exists:
+        # If the value doesn't exist, update the array
+        curr.execute("UPDATE Customer SET liked = ARRAY_APPEND(liked, %s) WHERE customerid = %s;", (carID, personID))
+        connection.commit()
+        print("DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+    else:
+        print(f"{carID} already exists in the liked array for customer {personID}")
+
+    connection.close()
+    curr.close()
+    return 'Transformed!'
 
 
 
@@ -84,6 +114,9 @@ def create_token():
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
     return response
+
+
+
 
 @app.route("/logout", methods=["POST"])
 def logout():
@@ -123,8 +156,32 @@ def home():
 #     greeting = {"Hello" : "World"}
 #     return greeting
 
-@app.route("/hello/<int:price>/<int:min>/<int:max>/<string:body>")
-def get_element_by_price(price,min,max,body):
+@app.route("/getDataLiked/<int:id>")
+def getLiked(id):
+    connection = psycopg2.connect(database = DB_NAME,
+                            host = DB_HOST,
+                            user = DB_USER,
+                                password = DB_PASSWORD,
+                                port = DB_PORT )
+    curr = connection.cursor()
+    
+    curr.execute("SELECT liked FROM Customer WHERE customerid = %s;", (id,))
+    data = curr.fetchall()
+    print(type(data))
+    print(data)
+    connection.commit() # save changes made
+    connection.close() # close the connection pls
+    curr.close() # close the cursor as well
+    return data
+
+
+
+
+
+
+
+@app.route("/hello/<int:price>/<int:min>/<int:max>/<string:body>/<int:miles>")
+def get_element_by_price(price,min,max,body,miles):
     connection = psycopg2.connect(database = DB_NAME,
                             host = DB_HOST,
                             user = DB_USER,
@@ -134,14 +191,13 @@ def get_element_by_price(price,min,max,body):
 
     # connect to database with cursor to access data
     curr = connection.cursor()
-
     print("Attempting the great SQL Creation")
     try:
         # execute sql statements
         if body=="All":
-            curr.execute("SELECT * FROM cars WHERE price <= %s AND year >= %s AND year <= %s;", (price,min,max))
+            curr.execute("SELECT * FROM cars WHERE price <= %s AND year >= %s AND year <= %s AND miles <= %s;", (price,min,max,miles))
         else:
-            curr.execute("SELECT * FROM cars WHERE price <= %s AND year >= %s AND year <= %s AND bodytype = %s;", (price,min,max,body))
+            curr.execute("SELECT * FROM cars WHERE price <= %s AND year >= %s AND year <= %s AND bodytype = %s AND miles <= %s;", (price,min,max,body,miles))
 
         data = curr.fetchall()
         print(type(data))
@@ -168,6 +224,68 @@ def get_element_by_price(price,min,max,body):
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
     return data
+
+
+
+
+
+
+@app.route("/specifics", methods=["GET"])
+def get_elements_by_ids():
+    connection = None
+
+    try:
+        # Retrieve the comma-separated string of car IDs from the request args
+        car_ids_str = request.args.get("car_ids", "")
+        
+        if not car_ids_str:
+            return "No car IDs provided in the request."
+
+        # Convert the comma-separated string to a list of integers
+        car_ids = list(map(int, car_ids_str.split(',')))
+
+        connection = psycopg2.connect(
+            database=DB_NAME,
+            host=DB_HOST,
+            user=DB_USER,
+            password=DB_PASSWORD,
+            port=DB_PORT
+        )
+
+        # Connect to the database with a cursor to access data
+        curr = connection.cursor()
+
+        # Use a parameterized query with the IN clause to fetch data for multiple car IDs
+        curr.execute("SELECT * FROM cars WHERE carid IN %s;", (tuple(car_ids),))
+
+        data = curr.fetchall()
+
+    except Exception as error:
+        print("Error:", error)
+        data = []
+
+    finally:
+        if connection:
+            connection.commit()
+            connection.close()
+            curr.close()
+
+    return jsonify(data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route("/specific/<int:id>")
 def get_element_by_id(id):

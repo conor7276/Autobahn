@@ -19,14 +19,24 @@ function Login() {
       const userToken = localStorage.getItem('token');
       return userToken && userToken
     }
+    function getData() {
+      const userData = localStorage.getItem('data');
+      return userData && userData
+    }
   
     const [token, setToken] = useState(getToken());
     const [showAlert, setShowAlert] = useState(false);
-    const [data,setData]=useState();
+    const [data,setData]=useState(getData());
+
     function saveToken(userToken) {
       localStorage.setItem('token', userToken);
       navigate(-1);
       setToken(userToken);
+    };
+    function saveData(userData) {
+      localStorage.setItem('data', userData);
+      
+      setData(userData);
     };
   
     function removeToken() {
@@ -63,10 +73,6 @@ function Login() {
         }
       })
 
-    
-
-
-      
       setSignupForm(({
         name:"",
         email: "",
@@ -100,7 +106,7 @@ function Login() {
                 // console.log(response.data.user_id)
                 //console.log(data.data.access_token);
                 saveToken(response.data.access_token);
-                setData(response.data.user_id)
+                saveData(response.data.user_id)
                 
             })
             .catch((error) => {
