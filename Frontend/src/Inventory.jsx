@@ -11,9 +11,14 @@ function Inventory() {
     const [bodyType,setBodyType]= useState('All');
     const [selectedCar, setSelectedCar] = useState(brand);
     const [showSpinner, setShowSpinner] = useState(true);
-    const [price, setPrice] = useState(500000); 
+    const [price, setPrice] = useState(500000);
+    const [miles,setMiles]=useState(200000)
     const [min,setMin]=useState(1950);
     const [max,setMax]=useState(2023);
+    const handleMilesChange = (event) => {
+      setMiles(event.target.value);
+      console.log(miles)
+    };
 
     const handleCarSelect = (event) => {
         setSelectedCar(event.target.value);
@@ -28,19 +33,19 @@ function Inventory() {
 
     setTimeout(() => {
         setShowSpinner(false);
-      }, 1000);
+      }, 2000);
     
     useEffect(() => {
         const fetchData = async () => {
             try {
                 
                 if(selectedCar==="All"){
-                    const response = await fetch(`http://localhost:5000/hello/${price}/${min}/${max}/${bodyType}`);
+                    const response = await fetch(`http://localhost:5000/hello/${price}/${min}/${max}/${bodyType}/${miles}`);
                     const data = await response.json();
                     setData(data);
                     console.log(data);}
                 else{
-                    const response = await fetch(`http://localhost:5000/hello2/${selectedCar}/${price}/${min}/${max}/${bodyType}`);
+                    const response = await fetch(`http://localhost:5000/hello2/${selectedCar}/${price}/${min}/${max}/${bodyType}/${miles}`);
                     const data = await response.json();
                     if (data.length==0){
                         setData([]);
@@ -56,7 +61,7 @@ function Inventory() {
             }
         };
         fetchData();
-    }, [selectedCar,price,min,max,bodyType]);
+    }, [selectedCar,price,min,max,bodyType,miles]);
 
     const carsLayout = data.map((car, i) => {
         return <Carprot car={car} key={i} />;
@@ -65,6 +70,10 @@ function Inventory() {
       const [x, setX] = useState(500000); 
     const handleXChange = (event) => {
         setX(event.target.value);
+      };
+      const [mx, setMX] = useState(200000); 
+    const handleMXChange = (event) => {
+        setMX(event.target.value);
       };
 
       const handleMinChange = (event) => {
@@ -77,7 +86,7 @@ function Inventory() {
         return (
             <>
                 <Nav />
-                <div className=" flex flex-col  w-screen bg-gray-200">
+                <div className=" flex flex-col min-h-screen w-screen bg-gray-200">
                 <div className="absolute  p-2 rounded-lg place-content-center bg-black mt-7 w-1/4 h-auto mx-1">
                 <span className="w-full flex justify-center items-center text-sm text-white py-2 mr-3">Make</span>
                 <div className="flex justify-center items-center">
@@ -99,6 +108,16 @@ function Inventory() {
                 <div className="-mt-2 flex w-full justify-between">
                 <span className="text-sm text-white">50000</span>
                 <span className="text-sm text-white">500000</span>
+                </div>
+                </div>
+                <div className="miles-range p-4">
+                <span className="text-sm text-white">Max Miles </span>
+                <span className="text-sm text-white">{mx} mi</span>
+                
+                <input className="w-full accent-indigo-600" type="range" name="" value={mx} min="0" max="200000" onChange={handleMXChange} onMouseUp={handleMilesChange}/>
+                <div className="-mt-2 flex w-full justify-between">
+                <span className="text-sm text-white">0</span>
+                <span className="text-sm text-white">200000</span>
                 </div>
                 </div>
                 <div>

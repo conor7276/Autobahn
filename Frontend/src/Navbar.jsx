@@ -1,6 +1,7 @@
 import { PiShoppingCart } from 'react-icons/pi';
 import { IoPersonOutline, IoPersonRemoveOutline } from 'react-icons/io5';
 import { BiSolidCarMechanic } from 'react-icons/bi';
+import {AiOutlineHeart} from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -19,6 +20,7 @@ function Nav() {
         setToken(null);
       }
 
+
     return (
         <nav className="bg-black">
             <div className="flex flex-wrap items-center justify-between">
@@ -30,7 +32,10 @@ function Nav() {
                     <Link to={`/Inventory?brand=All`} className="text-white mr-10 font-sans "> <PiShoppingCart /> </Link>
                     {console.log(token)}
                     {token ? (
+                        <div className="flex items-end">
+                        <Link to={`/liked`} className="text-white mr-10 font-sans" ><AiOutlineHeart /></Link>
                         <button className="text-white mr-10 font-sans" onClick={removeToken}><IoPersonRemoveOutline /></button>
+                        </div>
                     ) : (
                         <Link to={`/login`} className="text-white mr-10 font-sans"> <IoPersonOutline /> </Link>
                     )}
