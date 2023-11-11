@@ -28,7 +28,7 @@ function Nav() {
                     <img src="/Logo.png" className="h-16 mx-10" alt="Flowbite Logo" />
                 </div>
                 <div className='flex items-end'>
-                    <Link to={`/Inventory?brand=All`} className="text-white mr-10 font-sans "> <BiSolidCarMechanic /> </Link>
+                    <Link to={`/service`} className="text-white mr-10 font-sans "> <BiSolidCarMechanic /> </Link>
                     <Link to={`/Inventory?brand=All`} className="text-white mr-10 font-sans "> <PiShoppingCart /> </Link>
                     {console.log(token)}
                     {token ? (

@@ -49,24 +49,21 @@ def signUp():
 
     if not name:
         print("No name entered")
-        return {"msg" : "No name entered"}
+        return jsonify({"error": "No name entered"}), 400
     
     email_regex_pattern = re.compile(r"([a-zA-Z0-9_.+-]+)@[a-zA-Z0-9_.+-]+\.[a-zA-z0-9_.+-]")
     if not re.match(email_regex_pattern, email): # Check if email entered is an actual email
         print("Email does not exist or meet requirements.")
-        return {"msg" : "Email does not exist"}, 401
+        return jsonify({"error": "Email does not exist or meet requirements."}), 400
     
     password_regex_pattern = re.compile(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$')
     if not re.match(password_regex_pattern, password): # check if password has correct requirements
-        err_msg = "Password must contain 8 characters and at least 1 lowercase 1 uppercase 1 number and 1 special character."
-        print(err_msg)
-        return {"msg" : err_msg}, 401
+        return jsonify({"error": "Password must contain 8 characters and at least 1 lowercase, 1 uppercase, 1 number, and 1 special character."}), 400
     
     phone_regex_pattern = re.compile(r'^[0-9]{10}$')
     if not re.match(phone_regex_pattern, phone): #Check if phone number is 10 digits
-        err_msg = "Phone number must contain 10 digits"
-        print(err_msg)
-        return{"msg" : err_msg}, 401
+        return jsonify({"error": "Phone number must contain 10 digits"}), 400
+    
     
 
     curr.execute("INSERT INTO Customer (name, email, password,liked, phonenumber) VALUES(%s,%s,%s,%s,%s);",(name,email,password,liked,phone))
@@ -74,7 +71,9 @@ def signUp():
     connection.commit() # save changes made
     connection.close() # close the connection pls
     curr.close() # close the cursor as well
+    
     return 'Transformed!'
+
 
 @app.route('/Like', methods=['POST'])
 def like():
@@ -130,18 +129,13 @@ def create_token():
 
     # If no email return error
     if len(data) == 0:
-        print("Email not found for ", email)
-        return {"msg" : "Email does not exist"}, 401
+        return jsonify({"error": "User not found"}), 400
     
     # If there is an email found check if password is correct
     curr.execute("SELECT * FROM Customer WHERE email = %s AND password = %s;", (email,password))
     data = curr.fetchall()
     print(data)
     
-    # If password is not correct return error
-    if len(data) == 0:
-        print("Password incorrect for ", email)
-        return {"msg": "Wrong email or password"}, 401
     
     user_id = data[0] 
     access_token = create_access_token(identity=email)

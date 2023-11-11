@@ -9,6 +9,14 @@ export  default function Invcomponent({car}){
     const name=car[8];
     //const brand=car[9];
 
+
+    function getToken() {
+      const userToken = localStorage.getItem('token');
+      return userToken && userToken
+    }
+  
+    const [token, setToken] = useState(getToken());
+
     function getData() {
         const userData = localStorage.getItem('data');
         return userData && userData
@@ -44,15 +52,17 @@ export  default function Invcomponent({car}){
               <div className='w-full h-full'>
                 <img className='object-cover rounded-lg w-full h-full' src={photo[0]} alt='Photos Coming Soon' />
               </div>
-              <h3 className='absolute bottom-10 left-10 text-white w-60'>{name}</h3>
+              <h3 className='absolute bottom-10 left-10 text-white '>{name}</h3>
               <h3 className='absolute bottom-10 right-10 text-white'>{price} $</h3>
             </div>
           </Link>
     
-          {/* Button outside Link, positioned top right */}
+          {token ? (
           <button onClick={add} className='absolute top-0 right-0 text-white p-2'>
             <AiOutlineHeart />
           </button>
+          ) : null}
+          
         </div>
       );
       

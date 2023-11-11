@@ -47,14 +47,12 @@ function Inventory() {
                 else{
                     const response = await fetch(`http://localhost:5000/hello2/${selectedCar}/${price}/${min}/${max}/${bodyType}/${miles}`);
                     const data = await response.json();
+                    setData(data);
                     if (data.length==0){
                         setData([]);
                         console.log("No cars found");
                     }
-                    else{
-                        setData(data);
-                        console.log(data);
-                    }
+                    
                 }
             } catch (error) {
                 console.log(error);
