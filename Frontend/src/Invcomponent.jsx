@@ -46,9 +46,10 @@ export  default function Invcomponent({car}){
       }
     
       return (
-        <div className='group w-full h-84 p-2 mt-5 rounded-lg duration-300 transform hover:-translate-y-1 relative'>
-          <Link to={`${id}`}>
-            <div>
+        <>
+        <div className='group w-full h-84 p-2 mt-5 rounded-lg duration-300 transform hover:-translate-y-1 relative '>
+          <Link to={`${id}`} className="h-full block">
+            <div className='w-full h-full'>
               <div className='w-full h-full'>
                 <img className='object-cover rounded-lg w-full h-full' src={photo[0]} alt='Photos Coming Soon' />
               </div>
@@ -64,6 +65,7 @@ export  default function Invcomponent({car}){
           ) : null}
           
         </div>
+        </>
       );
       
       
