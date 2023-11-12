@@ -201,7 +201,7 @@ function Login() {
         </div>
         {errorL && (
           <div className="error">
-            <p className="text-red-600">{errorL}</p>
+            <p className="text-red-600 text-center">{errorL}</p>
           </div>
         )}
         <button
@@ -265,7 +265,7 @@ function Login() {
         </div>
         {error && (
           <div className="error">
-            <p className="text-red-600">{error}</p>
+            <p className="text-red-600 text-center">{error}</p>
           </div>
         )}
         <button
