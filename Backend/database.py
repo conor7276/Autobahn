@@ -39,8 +39,8 @@ curr = connection.cursor()
 try:
     # execute sql statements
 
-    #curr.execute("DROP TABLE Customer;")
-    curr.execute("CREATE TABLE IF NOT EXISTS Customer (customerid serial PRIMARY KEY, name varchar, email varchar, password varchar, liked int[], phonenumber varchar);")
+    curr.execute("DROP TABLE cars;")
+    #curr.execute("CREATE TABLE IF NOT EXISTS Customer (customerid serial PRIMARY KEY, name varchar, email varchar, password varchar, liked int[], phonenumber varchar);")
     #curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price float, photos text[], issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar, filter varchar, miles int);")
     #curr.execute("DELETE FROM cars;")
   
