@@ -250,7 +250,6 @@ def get_element_by_price(price,min,max,body,miles):
     except(Exception, psycopg2.Error) as error:
         print(error)
 
-
     connection.commit() # save changes made
     connection.close() # close the connection pls
     curr.close() # close the cursor as well

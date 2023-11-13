@@ -20,7 +20,11 @@
         "brand" : "Mercedes",
         "bodytype" : "Sedan",
         "filter" : "Mercedes",
-        "miles" : "80000"
+        "miles" : "80000",
+        "color" : "Silver",
+        "drivetrain" : "RWD",
+        "horsepower" : "320",
+        "transmission" : "Automatic"
     },
     {
         "price" : "80000",
@@ -43,7 +47,11 @@
         "brand" : "Mazda",
         "bodytype" : "Coupe",
         "filter" : "Foreigners",
-        "miles" : "60000"
+        "miles" : "60000",
+        "color" : "Yellow",
+        "drivetrain" : "RWD",
+        "horsepower" : "500",
+        "transmission" : "Manual"
     },
     {
         "price" : "130000",
@@ -66,7 +74,11 @@
         "brand" : "Ferrari",
         "bodytype" : "Coupe",
         "filter" : "Foreigners",
-        "miles" : "40000"
+        "miles" : "40000",
+        "color" : "Black",
+        "drivetrain" : "RWD",
+        "horsepower" : "550",
+        "transmission" : "Manual"
     },
     {
         "price" : "200000",
@@ -89,7 +101,11 @@
         "brand" : "Porsche",
         "bodytype" : "Coupe",
         "filter" : "Porsche",
-        "miles" : "7600"        
+        "miles" : "7600",
+        "color" : "Green",
+        "drivetrain" : "RWD",
+        "horsepower" : "500",
+        "transmission" : "Automatic"        
     },
     {
         
@@ -113,7 +129,11 @@
         "brand" : "Audi",
         "bodytype" : "Wagon",
         "filter" : "Audi",
-        "miles" : "11000"
+        "miles" : "11000",
+        "color" : "Grey",
+        "drivetrain" : "AWD",
+        "horsepower" : "621",
+        "transmission" : "Automatic"
               
     },
     {
@@ -137,7 +157,11 @@
         "brand" : "BMW",
         "bodytype" : "Sedan",
         "filter" : "BMW",
-        "miles" : "3800"      
+        "miles" : "3800",
+        "color" : "Green",
+        "drivetrain" : "RWD",
+        "horsepower" : "503",
+        "transmission" : "Manual"      
     },
     {
         "price" : "60000",
@@ -160,7 +184,11 @@
         "brand" : "Mercedes",
         "bodytype" : "SUV",
         "filter" : "Mercedes",
-        "miles" : "66800"
+        "miles" : "66800",
+        "color" : "Black",
+        "drivetrain" : "AWD",
+        "horsepower" : "544",
+        "transmission" : "Automatic"
     },
     {
         "price" : "500000",
@@ -183,7 +211,11 @@
         "brand" : "Porsche",
         "bodytype" : "Race Car",
         "filter" : "Special",
-        "miles" : "90"       
+        "miles" : "90" ,
+        "color" : "Black & Red",
+        "drivetrain" : "RWD",
+        "horsepower" : "700",
+        "transmission" : "Automatic"      
     },
     {
         "price" : "50000",
@@ -206,7 +238,11 @@
         "brand" : "Mercedes",
         "bodytype" : "Coupe",
         "filter" : "Mercedes",
-        "miles" : "38100"        
+        "miles" : "38100",
+        "color" : "White",
+        "drivetrain" : "RWD",
+        "horsepower" : "503",
+        "transmission" : "Automatic"        
     },
     {
         "price" : "150000",
@@ -229,7 +265,11 @@
         "brand" : "BMW",
         "bodytype" : "Sedan",
         "filter" : "BMW",
-        "miles" : "84"
+        "miles" : "84",
+        "color" : "Grey",
+        "drivetrain" : "RWD",
+        "horsepower" : "627",
+        "transmission" : "Automatic"
     },
     {
         "price" : "85000",
@@ -252,7 +292,11 @@
         "brand" : "Audi",
         "bodytype" : "Convertible",
         "filter" : "Audi",
-	    "miles" : "10200"
+	    "miles" : "10200",
+        "color" : "White",
+        "drivetrain" : "RWD",
+        "horsepower" : "502",
+        "transmission" : "Manual"
     },
     {
         "price" : "31500",
@@ -275,7 +319,11 @@
         "brand" : "Audi",
         "bodytype" : "Sedan",
         "filter" : "Audi",
-	    "miles" : "59100"       
+	    "miles" : "59100",
+        "color" : "Grey",
+        "drivetrain" : "AWD",
+        "horsepower" : "349",
+        "transmission" : "Automatic"       
     },
     {
         "price" : "43750",
@@ -298,7 +346,11 @@
         "brand" : "Porsche",
         "bodytype" : "SUV",
         "filter" : "Porsche",
-	    "miles" : "37700"       
+	    "miles" : "37700",
+        "color" : "Midnight Blue",
+        "drivetrain" : "AWD",
+        "horsepower" : "434",
+        "transmission" : "Automatic"       
     },
     {
         "price" : "140000",
@@ -321,7 +373,11 @@
         "brand" : "Nissan",
         "bodytype" : "Coupe",
         "filter" : "Foreigners",
-	    "miles" : "14000"       
+	    "miles" : "14000",
+        "color" : "White",
+        "drivetrain" : "AWD",
+        "horsepower" : "1000",
+        "transmission" : "Manual"       
     },
     {
         "price" : "350000",
@@ -344,7 +400,11 @@
         "brand" : "Porsche",
         "bodytype" : "Coupe",
         "filter" : "Special",
-	    "miles" : "35000"        
+	    "miles" : "35000",
+        "color" : "Yellow",
+        "drivetrain" : "RWD",
+        "horsepower" : "700",
+        "transmission" : "Manual"        
     },
     {
         "price" : "77000",
@@ -367,7 +427,11 @@
         "brand" : "Audi",
         "bodytype" : "Wagon",
         "filter" : "Audi",
-	    "miles" : "93000"        
+	    "miles" : "93000",
+        "color" : "Blue",
+        "drivetrain" : "AWD",
+        "horsepower" : "320",
+        "transmission" : "Manual"        
     },
     {
         "price" : "91500",
@@ -387,11 +451,15 @@
         "engine" : "6.2L V8",
         "country" : "USA",
         "year" : "2016",
-        "name" : "Corvette Z06 Coupe C7.R Edition",
+        "name" : "Corvette Z06 Coupe",
         "brand" : "Chevrolet",
         "bodytype" : "Coupe",
         "filter" : "Foreigners",
-	    "miles" : "2000"        
+	    "miles" : "2000",
+        "color" : "Yellow",
+        "drivetrain" : "RWD",
+        "horsepower" : "650",
+        "transmission" : "Automatic"        
     },
     {
         "price" : "19750",
@@ -406,7 +474,7 @@
                     "https://media.carsandbids.com/cdn-cgi/image/width=2080,quality=80/37ef5e6835088e603f3cafcd9f3460fabf1f898c/photos/s-eOYryDdXAe.jpeg?t=169634843599",
                     "https://media.carsandbids.com/cdn-cgi/image/width=2080,quality=80/37ef5e6835088e603f3cafcd9f3460fabf1f898c/photos/3g6Ad48E-1bNUMy6mrKh.jpeg?t=169687962067"],
         "issold" : "false",
-        "description" : "The E39 BMW M5 is a true BMW icon, boasting great handling and handsome styling, along with a potent V8 paired with a mandatory 6-speed manual transmission. This particular M5 is finished in a classic black-on-black color combination and looks to be in great condition. It also boasts some nice factory equipment, like full Nappa leather upholstery, heated front seats, and those beautiful Style 65 wheels. Its also mostly unmodified, with tinted windows being the only change from stock – and it’s offered with a clean, accident-free Carfax report, further adding to the appeal",
+        "description" : "The E39 BMW M5 is a true BMW icon, boasting great handling and handsome styling, along with a potent V8 paired with a mandatory 6-speed manual transmission. This particular M5 is finished in a classic black-on-black color combination and looks to be in great condition. It also boasts some nice factory equipment, like full Nappa leather upholstery, heated front seats, and those beautiful Style 65 wheels. Its also mostly unmodified, with tinted windows being the only change from stock and its offered with a clean, accident-free Carfax report, further adding to the appeal",
         "engine" : "4.9L V8",
         "country" : "Germany",
         "year" : "2000",
@@ -414,7 +482,11 @@
         "brand" : "BMW",
         "bodytype" : "Sedan",
         "filter" : "BMW",
-	    "miles" : "94800"
+	    "miles" : "94800",
+        "color" : "Black",
+        "drivetrain" : "RWD",
+        "horsepower" : "394",
+        "transmission" : "Manual"
     },
     {
         "price" : "125500",
@@ -437,7 +509,11 @@
         "brand" : "Prosche",
         "bodytype" : "Coupe",
         "filter" : "Porsche",
-	    "miles" : "23500"      
+	    "miles" : "23500",
+        "color" : "White",
+        "drivetrain" : "RWD",
+        "horsepower" : "594",
+        "transmission" : "Automatic"      
     },
     {
         "price" : "35500",
@@ -460,6 +536,118 @@
         "brand" : "Mercedes",
         "bodytype" : "Convertible",
         "filter" : "Mercedes",
-	    "miles" : "60000"        
+	    "miles" : "60000",
+        "color" : "Silver",
+        "drivetrain" : "RWD",
+        "horsepower" : "638",
+        "transmission" : "Automatic"        
+    },
+    {
+        "price" : "45000",
+        "photos" : ["https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/1477bbe21e8d6b5e719c7c3ccab577fd47dd8cc3/photos/rjN1L4vo-1m-UUM1dfH8.DYCTdo4PD.jpg?t=162577945961",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/1477bbe21e8d6b5e719c7c3ccab577fd47dd8cc3/photos/rjN1L4vo-EOeAE8hU36O.KBx7LX89n.jpg?t=162577950997",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/1477bbe21e8d6b5e719c7c3ccab577fd47dd8cc3/photos/rjN1L4vo-Pn4Nxs4QY8.mJbXomsJq.jpg?t=162577955149",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/1477bbe21e8d6b5e719c7c3ccab577fd47dd8cc3/photos/rjN1L4vo-e3eJFfvTq5V.bpYdcESTm.jpg?t=162577959463",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/1477bbe21e8d6b5e719c7c3ccab577fd47dd8cc3/photos/rjN1L4vo-CbECez0_s8.5PlIo1nR3.jpg?t=162577963734",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/4996a12ae7c106e237ed5854c74484f7ba62aaa0/photos/rjN1L4vo-36ub6lRL72H.jpg?t=162551574636",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/4996a12ae7c106e237ed5854c74484f7ba62aaa0/photos/rjN1L4vo-SG-nPVcMvUw.jpg?t=162551574754",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/4996a12ae7c106e237ed5854c74484f7ba62aaa0/photos/rjN1L4vo-FmYjOsvdiIE.jpg?t=162551574548",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/4996a12ae7c106e237ed5854c74484f7ba62aaa0/photos/rjN1L4vo-AL13njrWi_F.jpg?t=162551574313",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/4996a12ae7c106e237ed5854c74484f7ba62aaa0/photos/rjN1L4vo-YwuqG4ciViW.jpg?t=162551574210"],
+        "issold" : "false",
+        "description" : "The E70 X5M, as it's a handsome SUV with some truly excellent performance courtesy of an exceptionally muscular 555-horsepower turbocharged V8. This particular X5M looks to be a nice example, touting a few cosmetic modifications and just under 52,000 miles from new, which is reasonably low for one of these. This car also boasts some fantastic equipment, and it's a thrilling SUV to drive that should make the next owner especially happy.",
+        "engine" : "4.4L V8 TT",
+        "country" : "Germany",
+        "year" : "2012",
+        "name" : "X5 M",
+        "brand" : "BMW",
+        "bodytype" : "SUV",
+        "filter" : "BMW",
+        "miles" : "55000",
+        "color" : "White",
+        "drivetrain" : "AWD",
+        "horsepower" : "555",
+        "transmission" : "Automatic"
+    },
+    {
+        "price" : "37000",
+        "photos" : ["https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/39ba75f9b610a05237adc3ca976891cd48f5832c/photos/KDVl5MV8-AaBxc2fpwP-(edit).jpg?t=169921594392",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/39ba75f9b610a05237adc3ca976891cd48f5832c/photos/KDVl5MV8-kMlIIfsvNJ-(edit).jpg?t=169921602695",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/39ba75f9b610a05237adc3ca976891cd48f5832c/photos/KDVl5MV8-ZiGpTW6lOh-(edit).jpg?t=169921605464",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/7a0a3c6148108c9c64425dd85e0181fa3cccb652/photos/KDVl5MV8-v9FuBfEFws-(edit).jpg?t=169950984389",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/39ba75f9b610a05237adc3ca976891cd48f5832c/photos/KDVl5MV8-Uo4ckDZTzu-(edit).jpg?t=169921608005",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/08636928eb64896dcaeb736221f9664dabe4fe66/photos/s-DoRWJxe3zI.jpeg?t=169821045057",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/39ba75f9b610a05237adc3ca976891cd48f5832c/photos/KDVl5MV8-bfFX47rBYI-(edit).jpg?t=169921626583",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/39ba75f9b610a05237adc3ca976891cd48f5832c/photos/KDVl5MV8-0iJhJ-y6Nd-(edit).jpg?t=169921635725",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/39ba75f9b610a05237adc3ca976891cd48f5832c/photos/KDVl5MV8-TtMmfA2y81-(edit).jpg?t=169921638389",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=1200,quality=80/39ba75f9b610a05237adc3ca976891cd48f5832c/photos/KDVl5MV8-zn85JHaLTk-(edit).jpg?t=169921640313"],
+        "issold" : "false",
+        "description" : "The SEC was the elegant, pillarless coupe version of the W126 Mercedes-Benz S-Class  and it's a lot less common than the sedan! These were tremendously expensive when they were new; you really had to be someone to buy one, and they came loaded with the features buyers expected from a luxury coupe in the 1980s. This particular 560SEC is finished in an attractive Arctic White over gray color combination, and it features some nice equipment like a sunroof, leather upholstery, heated front seats, and automatic climate control plus that big 5.5-liter V8. It also touts an awesome set of ATS AMG Penta wheels, and it benefits from a recent repaint and servicing.",
+        "engine" : "5.5L V8",
+        "country" : "Germany",
+        "year" : "1988",
+        "name" : "560SEC W126",
+        "brand" : "Mercedes",
+        "bodytype" : "Coupe",
+        "filter" : "Mercedes",
+        "miles" : "187000",
+        "color" : "White",
+        "drivetrain" : "RWD",
+        "horsepower" : "238",
+        "transmission" : "Automatic"
+    },
+    {
+        "price" : "73000",
+        "photos" : ["https://media-r2.carsandbids.com/cdn-cgi/image/width=2080,quality=80/c51905b0000b639a185eeb080dd879bf007f5604/photos/36ezmN4P-hYnqKKfOeI-(edit).jpg?t=168424997175",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=2080,quality=80/c51905b0000b639a185eeb080dd879bf007f5604/photos/36ezmN4P-9dRt3_kM_z-(edit).jpg?t=168425077690",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=2080,quality=80/c51905b0000b639a185eeb080dd879bf007f5604/photos/36ezmN4P-9mBeOX87L0-(edit).jpg?t=168425058581",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=2080,quality=80/c51905b0000b639a185eeb080dd879bf007f5604/photos/36ezmN4P-z9ZScIOLIe-(edit).jpg?t=168425098794",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=2080,quality=80/c51905b0000b639a185eeb080dd879bf007f5604/photos/36ezmN4P-d9bGpn3XZl-(edit).jpg?t=168425144654",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=2080,quality=80/c51905b0000b639a185eeb080dd879bf007f5604/photos/36ezmN4P-_NfLII0sMw-(edit).jpg?t=168425195953",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=2080,quality=80/c51905b0000b639a185eeb080dd879bf007f5604/photos/36ezmN4P-g6NTCHLjLD-(edit).jpg?t=168425230475",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=2080,quality=80/c51905b0000b639a185eeb080dd879bf007f5604/photos/36ezmN4P-W_lEm5TS88-(edit).jpg?t=168425225823",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=2080,quality=80/c51905b0000b639a185eeb080dd879bf007f5604/photos/36ezmN4P-3BmyoHcdu7-(edit).jpg?t=168425244932",
+                    "https://media-r2.carsandbids.com/cdn-cgi/image/width=2080,quality=80/b15ef87583e188e4f11e49385eaeacdb3a635120/photos/36ezmN4P-vG100v0GRA.jpg?t=168382132791"],
+        "issold" : "false",
+        "description" : "If you're in the market for a do-it-all family car, the Audi Q7 should be on your shopping list it's spacious, it's luxurious, AND it boasts full-time all-wheel-drive. This example touts the 3.0-liter V6, which is a nice upgrade over the 2.0-liter turbocharged 4-cylinder that Audi made standard in 2021, and it benefits from a long list of features including the Prestige, Convenience, and Executive, packages",
+        "engine" : "3.0L V6 Turbo Hybrid",
+        "country" : "Germany",
+        "year" : "2021",
+        "name" : "Q7",
+        "brand" : "Audi",
+        "bodytype" : "SUV",
+        "filter" : "Audi",
+        "miles" : "20100",
+        "color" : "Gray",
+        "drivetrain" : "AWD",
+        "horsepower" : "330",
+        "transmission" : "Automatic"
+    },
+    {
+        "price" : "60000",
+        "photos" : ["https://static.cargurus.com/images/forsale/2023/11/11/00/33/2023_audi_sq5_sportback-pic-3872301251012539565-1024x768.jpeg",
+                    "https://static.cargurus.com/images/forsale/2023/11/11/00/33/2023_audi_sq5_sportback-pic-8194784577910570659-1024x768.jpeg",
+                    "https://static.cargurus.com/images/forsale/2023/11/11/00/33/2023_audi_sq5_sportback-pic-3872301251012539565-1024x768.jpeg",
+                    "https://static.cargurus.com/images/forsale/2023/11/11/00/33/2023_audi_sq5_sportback-pic-8570543829119570897-1024x768.jpeg",
+                    "https://static.cargurus.com/images/forsale/2023/11/11/00/33/2023_audi_sq5_sportback-pic-6720292563059862453-1024x768.jpeg",
+                    "https://static.cargurus.com/images/forsale/2023/11/11/00/33/2023_audi_sq5_sportback-pic-7190657242699788329-1024x768.jpeg",
+                    "https://static.cargurus.com/images/forsale/2023/11/11/00/33/2023_audi_sq5_sportback-pic-5741640534312282907-1024x768.jpeg",
+                    "https://static.cargurus.com/images/forsale/2023/11/11/00/33/2023_audi_sq5_sportback-pic-8261369499632100961-1024x768.jpeg",
+                    "https://static.cargurus.com/images/forsale/2023/11/11/00/33/2023_audi_sq5_sportback-pic-3341240489097382014-1024x768.jpeg",
+                    "https://static.cargurus.com/images/forsale/2023/11/11/00/33/2023_audi_sq5_sportback-pic-4180359244938447521-1024x768.jpeg"],
+        "issold" : "false",
+        "description" : "Clean CARFAX. CARFAX One-Owner. Priced below KBB Fair Purchase Price! Black 2023 Audi SQ5 Premium Plus quattro quattro 8-Speed Automatic with Tiptronic 3.0L TFSI Recent Arrival!",
+        "engine" : "3.0L V6 Turbo",
+        "country" : "Germany",
+        "year" : "2023",
+        "name" : "SQ5 Sportback",
+        "brand" : "Audi",
+        "bodytype" : "SUV",
+        "filter" : "AUdi",
+        "miles" : "25300",
+        "color" : "Black",
+        "drivetrain" : "AWD",
+        "horsepower" : "330",
+        "transmission" : "Automatic"   
     }
 ]

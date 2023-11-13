@@ -39,10 +39,11 @@ curr = connection.cursor()
 try:
     # execute sql statements
 
+    #curr.execute("DROP TABLE Customer;")
     curr.execute("DROP TABLE cars;")
-    #curr.execute("CREATE TABLE IF NOT EXISTS Customer (customerid serial PRIMARY KEY, name varchar, email varchar, password varchar, liked int[], phonenumber varchar);")
-    #curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price float, photos text[], issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar, filter varchar, miles int);")
-    #curr.execute("DELETE FROM cars;")
+    curr.execute("CREATE TABLE IF NOT EXISTS Customer (customerid serial PRIMARY KEY, name varchar, email varchar, password varchar, liked int[], phonenumber varchar);")
+    curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price float, photos text[], issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar, filter varchar, miles int, color varchar, drivetrain varchar, horsepower int, transmission varchar);")
+    curr.execute("DELETE FROM cars;")
   
     inventory_file = open("inventory.json")
     data = json.loads(inventory_file.read())
@@ -50,7 +51,7 @@ try:
     for car in data:
 
         print(car["name"])
-        curr.execute("""INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype,filter,miles)
+        curr.execute("""INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype,filter,miles,color,drivetrain,horsepower,transmission)
                       VALUES (
                         %(price)s,
                         %(photos)s,
@@ -63,7 +64,11 @@ try:
                         %(brand)s,
                         %(bodytype)s,
                         %(filter)s,
-                        %(miles)s
+                        %(miles)s,
+                        %(color)s,
+                        %(drivetrain)s,
+                        %(horsepower)s,
+                        %(transmission)s
                       );""",
                       {'price' : car['price'],
                        'photos' : car['photos'],
@@ -76,12 +81,20 @@ try:
                        'brand' : car['brand'], 
                        'bodytype' : car['bodytype'], 
                        'filter' :  car['filter'],
-                       'miles' : car['miles']
+                       'miles' : car['miles'],
+                       'color' : car['color'],
+                       'drivetrain' : car['drivetrain'],
+                       'horsepower' : car['horsepower'],
+                       'transmission' : car['transmission']
                         })
 
     data = curr.fetchall()
     #print(data)
     
+        # "color" : "",
+        # "drivetrain" : "",
+        # "horsepower" : "",
+        # "transmission" : ""
     #print(json.dumps(data, cls=DecimalEncoder))
     categorized_data_list = []
     for row in data:
