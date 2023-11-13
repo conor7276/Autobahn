@@ -1,11 +1,17 @@
 from dotenv import load_dotenv
 import psycopg2
-
+import json
 import os
 from os.path import join, dirname
-import json
 
 
+from decimal import Decimal
+
+class DecimalEncoder(json.JSONEncoder):
+  def default(self, obj):
+    if isinstance(obj, Decimal):
+      return str(obj)
+    return json.JSONEncoder.default(self, obj)
 
 dotenv_path = join(dirname(__file__),'.env')
 
@@ -23,8 +29,8 @@ DB_PORT = os.environ.get("DB_PORT")
 connection = psycopg2.connect(database = DB_NAME,
                             host = DB_HOST,
                             user = DB_USER,
-                                password = DB_PASSWORD,
-                                port = DB_PORT )
+                            password = DB_PASSWORD,
+                            port = DB_PORT )
 
 
 # connect to database with cursor to access data
@@ -32,17 +38,71 @@ curr = connection.cursor()
 
 try:
     # execute sql statements
-    curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price decimal(10,2), photos text, issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar);")
-    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('100000','https://media4.speedcafe.com/wp-content/uploads/2021/01/Porsche-911-Turbo-S-003-scaled.jpg','false','NICE CAR','Strong','Germany','2021','911 Turbo S Coupe','Porsche','Coupe');")
-    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('80000','https://cdn.carsbite.com/articles/59276_IMG-20210511-WA0016.jpg','false','NICE CAR2','Strong2','Germany','2023','Mecan Electric','Porsche','SUV');")
-    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('120000','https://www.carscoops.com/wp-content/uploads/2019/08/3969cea6-audi-rs7-rendering.jpg','false','NICE CAR3','Strong3','Germany','2023','RS7 Sportback','Audi','Sedan');")
-    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('78500','https://rmcmiami.com/wp-content/uploads/2023/07/E3A2837.jpg','false','NICE CAR4','Strong4','Germany','1994','E500 Limited W124','Mercedes','Sedan');")
-    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('78500','https://rmcmiami.com/wp-content/uploads/2022/08/DSC_9986-scaled.jpg','false','NICE CAR5','Strong5','Japan','1997','RX7 FD3S','Mazda','Coupe');")
-    curr.execute("INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype) VALUES('130000','https://rmcmiami.com/wp-content/uploads/2022/12/DSC_2906-1-scaled.jpg','false','NICE CAR6','Strong6','Italy','1996','F355 Berlinetta','Ferrari','Coupe');")
+
+    #curr.execute("DROP TABLE Customer;")
+    curr.execute("CREATE TABLE IF NOT EXISTS Customer (customerid serial PRIMARY KEY, name varchar, email varchar, password varchar, liked int[], phonenumber varchar);")
+    #curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price float, photos text[], issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar, filter varchar, miles int);")
+    #curr.execute("DELETE FROM cars;")
+  
+    inventory_file = open("inventory.json")
+    data = json.loads(inventory_file.read())
+
+    for car in data:
+
+        print(car["name"])
+        curr.execute("""INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype,filter,miles)
+                      VALUES (
+                        %(price)s,
+                        %(photos)s,
+                        %(issold)s,
+                        %(description)s,
+                        %(engine)s,
+                        %(country)s,
+                        %(year)s,
+                        %(name)s,
+                        %(brand)s,
+                        %(bodytype)s,
+                        %(filter)s,
+                        %(miles)s
+                      );""",
+                      {'price' : car['price'],
+                       'photos' : car['photos'],
+                       'issold' : car['issold'],
+                       'description' : car['description'],
+                       'engine' :  car['engine'], 
+                       'country' : car['country'], 
+                       'year' :  car['year'], 
+                       'name' :  car['name'], 
+                       'brand' : car['brand'], 
+                       'bodytype' : car['bodytype'], 
+                       'filter' :  car['filter'],
+                       'miles' : car['miles']
+                        })
 
     data = curr.fetchall()
-    print(type(data))
-    print(data)
+    #print(data)
+    
+    #print(json.dumps(data, cls=DecimalEncoder))
+    categorized_data_list = []
+    for row in data:
+        categorized_data = {
+            "car_id": row[0],
+            "price": row[1],
+            "photo_url": row[2],
+            "is_available": row[3],
+            "description": row[4],
+            "condition": row[5],
+            "origin": row[6],
+            "year": row[7],
+            "model": row[8],
+            "make": row[9],
+            "body_type": row[10]
+        }
+        categorized_data_list.append(categorized_data)
+
+    json_data = json.dumps(categorized_data_list, cls=DecimalEncoder)
+    #print(json_data)
+    
 
 except(Exception, psycopg2.Error) as error:
     print(error)
