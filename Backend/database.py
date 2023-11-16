@@ -40,17 +40,17 @@ try:
     # execute sql statements
 
     #curr.execute("DROP TABLE Customer;")
-    curr.execute("DROP TABLE cars;")
-    curr.execute("CREATE TABLE IF NOT EXISTS Customer (customerid serial PRIMARY KEY, name varchar, email varchar, password varchar, liked int[], phonenumber varchar);")
-    curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price float, photos text[], issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar, filter varchar, miles int, color varchar, drivetrain varchar, horsepower int, transmission varchar);")
+    #curr.execute("DROP TABLE cars;")
+    #curr.execute("CREATE TABLE IF NOT EXISTS Customer (customerid serial PRIMARY KEY, name varchar, email varchar, password varchar, liked int[], phonenumber varchar);")
+    #curr.execute("CREATE TABLE cars (carid serial PRIMARY KEY, price float, photos text[], issold boolean, description text, engine varchar, country varchar, year int, name varchar, brand varchar, bodytype varchar, filter varchar, miles int, color varchar, drivetrain varchar, horsepower int, transmission varchar);")
     curr.execute("DELETE FROM cars;")
   
     inventory_file = open("inventory.json")
     data = json.loads(inventory_file.read())
-
+    count = 0
     for car in data:
-
-        print(car["name"])
+        count += 1 
+        print(count, car["name"])
         curr.execute("""INSERT INTO cars (price,photos,issold,description,engine,country,year,name,brand,bodytype,filter,miles,color,drivetrain,horsepower,transmission)
                       VALUES (
                         %(price)s,

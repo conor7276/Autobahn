@@ -232,7 +232,7 @@ def get_element_by_price(price,min,max,body,miles):
 
         data = curr.fetchall()
         print(type(data))
-        print(data)
+        #print(data)
         # data_json = {
         #     "car_id" : data[0],
         #     "price" : data[1],
