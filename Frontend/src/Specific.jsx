@@ -62,13 +62,13 @@ export default function Specific() {
       {/* Cell 1 */}
       <td className="flex-none w-72 border border-gray-800 p-4 flex items-center">
         <img className="w-10 h-10 object-cover rounded object-left mr-2" src="/miles.png" alt="Image 1" />
-        <p className="text-black text-lg text-center">Miles: </p>
+        <p className="text-black text-lg text-center">Miles: {item[12]} mi</p>
       </td>
       
       {/* Cell 2 */}
       <td className="flex-none w-72 border border-gray-800 p-4 flex items-center">
         <img className="w-10 h-10 object-cover rounded object-left mr-2" src="/transmition.png" alt="Image 1" />
-        <p className="text-black text-lg text-center">Transmition: </p>
+        <p className="text-black text-lg text-center">Transmition: {item[16]}</p>
       </td>
     </tr>
 
@@ -76,13 +76,13 @@ export default function Specific() {
       {/* Cell 3 */}
       <td className="flex-none w-72 border border-gray-800 p-4 flex items-center">
         <img className="w-10 h-10 object-cover rounded object-left mr-2" src="/color.png" alt="Image 1" />
-        <p className="text-black text-lg text-center">Color: </p>
+        <p className="text-black text-lg text-center">Color: {item[13]}</p>
       </td>
       
       {/* Cell 4 */}
       <td className="flex-none w-72 border border-gray-800 p-4 flex items-center">
         <img className="w-10 h-10 object-cover rounded object-left mr-2" src="/drivetrain.png" alt="Image 1" />
-        <p className="text-black text-lg text-center">Drivetrain: </p>
+        <p className="text-black text-lg text-center">Drivetrain: {item[14]}</p>
       </td>
     </tr>
 
@@ -90,13 +90,13 @@ export default function Specific() {
       {/* Cell 5 */}
       <td className="flex-none w-72 border border-gray-800 p-4 flex items-center">
         <img className="w-10 h-10 object-cover rounded object-left mr-2" src="/engine.png" alt="Image 1" />
-        <p className="text-black text-lg text-center">Engine: </p>
+        <p className="text-black text-lg text-center">Engine: {item[5]}</p>
       </td>
       
       {/* Cell 6 */}
       <td className="flex-none w-72 border border-gray-800 p-4 flex items-center">
         <img className="w-10 h-10 object-cover rounded object-left mr-2" src="/hp.png" alt="Image 1" />
-        <p className="text-black text-lg text-center">Horsepower: </p>
+        <p className="text-black text-lg text-center">Horsepower: {item[15]} hp</p>
       </td>
     </tr>
   </tbody>
