@@ -16,18 +16,7 @@ export async function loader({ params }) {
     return { car };
 }
 
-const postTest = async() =>{
-  const requestOptions = {
-    method : 'POST',
-    body: JSON.stringify({title:'POST test'})
-  };
-  //const response = await fetch(`http://localhost:5000/inquire/${requestOptions.body}`);
-  const response = await fetch(`http://localhost:5000/inquire`, requestOptions);
-  const data = await response.json();
-  console.log(data)
-  return data;
-  
-}
+
 
 // const testButton = async() =>{
 //   console.log("Button has been pressed");
@@ -129,7 +118,6 @@ export default function Specific() {
           />
         ))}
       </div>
-      <button onClick={postTest} className="ml-60 mt-5">Press me for post request</button>
     </div>
   ))}
 </div>
