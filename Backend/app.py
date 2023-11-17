@@ -382,16 +382,6 @@ def get_element_by_brand(brand, price,min,max,bodyType,miles):
 
    
     return data
-    
-@app.route('/inquire', methods = ['POST'])
-def inquire_car():
-    if(request.method == 'POST'):
-        print("Got your post request to inquire about the car")
-
-    else:
-        print("Something happened in inquiry that wasn't supposed to")
-    return {"Post Request" : "Recieved"}
-
 
 
 
