@@ -52,7 +52,7 @@ export default function Specific() {
   <img className="w-auto h-full" src={image} alt="NA" />
   <div className="inset-0 flex ml-8 ">
     <p className="whitespace-nowrap text-5xl font-bold flex">
-      <span>{item[9]} {item[8]}
+      <span>{item[9]} {item[8]} {item[7]}
       <div className="mt-5"><span className="text-green-500">{item[1]}$</span></div>
       <div className="inset-0 flex ml-1 ">
     {/* Table */}
@@ -103,7 +103,10 @@ export default function Specific() {
 </table>
 
   </div>
-      </span>
+  <div className="insert-0 absolute flex text-lg mt-5 ml-1 w-[36rem] whitespace-pre-wrap">
+    {item[4]}
+  </div>
+  </span>
       
     </p>
     </div>
